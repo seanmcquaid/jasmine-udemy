@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Simple Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
     <script src="calculator.js"></script>
     <script src="main.js"></script>
 </head>
-<body>
-    <h1>Simple Calculator</h1>
+<body class="body">
+    <h1 class="title">Simple Calculator</h1>
 
-    <input type="text" onchange="calculate(this.value)"/>
-    <div>Results : <span id="result"></span></div>
+    <input 
+        class="input" 
+        type="text"
+        title="calculator"
+        onchange="calculate(this.value)"
+        placeholder="Enter operation"
+        value="1+2"
+        />
 
+    <div class="result-container">
+        <div class="title">Result</div>
+        <span id="result">3</span>
+    </div>
 </body>
 </html>
