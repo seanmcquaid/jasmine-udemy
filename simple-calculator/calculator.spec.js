@@ -7,4 +7,23 @@
 
 describe("calculator.js", function(){
     // put specs here
+    // it("title of the spec", function(){
+    //     // todo : EXPECTATIONS
+    // })
+
+    it("should add numbers from total", function(){
+        // todo : EXPECTATIONS
+    })
+
+    it("should subtract numbers from total", function(){
+        // todo : EXPECTATIONS
+    })
+
+    it("should multiply total by number", function(){
+        // todo : EXPECTATIONS
+    })
+
+    it("should divide total by number", function(){
+        // todo : EXPECTATIONS
+    })
 });
