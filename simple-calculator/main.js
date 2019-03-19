@@ -8,6 +8,11 @@ function calculate(inputValue){
     const operation = inputValue.match(expression)
     // debugger
 
+    if (Number.isNaN(numberA) || Number.isNaN(numberB)|| operation === null){
+        updateResult("Operation not recognized");
+        return;
+    }
+
     const calculator = new Calculator();
     calculator.add(numberA);
 
