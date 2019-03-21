@@ -119,6 +119,17 @@ describe("calculator.js", function(){
         expect(calculator.total).toBeNaN()
     })
 
+    it("handles divide by zero", ()=>{
+        const calculator = new Calculator();
+        // need to use a function to return the thing that will throw something
+        // if you just pass in calc.divide(0), it will return as a fail
+        expect(function(){calculator.divide(0)}).toThrow()
+        // throw error can take two parameters, the Error constructor and the message
+        expect(function(){calculator.divide(0)}).toThrowError(Error)
+        expect(function(){calculator.divide(0)}).toThrowError(Error, "cannot divide by 0")
+    })
+
+
 });
 
 // deep equality comparison :
