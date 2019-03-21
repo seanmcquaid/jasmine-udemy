@@ -36,7 +36,7 @@
 
 // xdescribe works just like xit
 
-xdescribe("calculator.js", function(){
+describe("calculator.js", function(){
     // put specs here
     // it("title of the spec", function(){
     //     // todo : EXPECTATIONS
@@ -70,5 +70,10 @@ xdescribe("calculator.js", function(){
         calculator.total = 200;
         calculator.divide(2);
         expect(calculator.total).toBe(100);
+    })
+
+    it("should initialize the total", function(){
+        const calculator = new Calculator();
+        expect(calculator.total).toBe(0)
     })
 });
