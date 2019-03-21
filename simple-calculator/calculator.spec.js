@@ -75,16 +75,37 @@ describe("calculator.js", function(){
     it("should initialize the total", function(){
         const calculator = new Calculator();
         expect(calculator.total).toBe(0)
+        expect(calculator.total).toBeFalsy();
     })
 
-    it("has constructor", function(){
+    it("can be instantiated", function(){
         const calculator = new Calculator();
         const calculator2 = new Calculator();
-
+        expect(calculator).toBeTruthy();
+        expect(calculator2).toBeTruthy();
         expect(calculator).toEqual(calculator2)
+    })
+
+    it("instantiates unique object", function(){
+        const calculator = new Calculator();
+        const calculator2 = new Calculator();
+        // can use not to make a negative assertion
+        expect(calculator).not.toBe(calculator2);
+    })
+
+    it("has common operations", function(){
+        const calculator = new Calculator();
+
+        expect(calculator.add).toBeDefined();
+        expect(calculator.subtract).not.toBeUndefined();
+        expect(calculator.divide).not.toBeUndefined();
+        expect(calculator.multiply).not.toBeUndefined();
     })
 
 });
 
 // deep equality comparison :
 // toEqual = comparing two objects and making sure they have equal keys and values
+
+// truthy value is a value that evaluates to true in a boolean context
+// falsy value is a value that evaluates to false in a boolean context
