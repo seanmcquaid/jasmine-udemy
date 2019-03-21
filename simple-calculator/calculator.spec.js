@@ -79,8 +79,14 @@ describe("calculator.js", function(){
     })
 
     it("can be instantiated", function(){
+        // jasmine.addmatchers adds object of matchers
+        jasmine.addMatchers(customMatchers);
         const calculator = new Calculator();
         const calculator2 = new Calculator();
+
+        expect(calculator).toBeCalculator();
+        // need messages for both pass and fail
+        // expect(calculator).not.toBeCalculator();
         expect(calculator).toBeTruthy();
         expect(calculator2).toBeTruthy();
         expect(calculator).toEqual(calculator2)
