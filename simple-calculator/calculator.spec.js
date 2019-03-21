@@ -137,6 +137,12 @@ describe("calculator.js", function(){
         expect(calculator.add(20)).toBe(70)
         expect(calculator.total).toMatch(/-?\d+/)
         expect(typeof(calculator.total)).toMatch("number")
+
+        // asymmetric matchers
+        // not equal in each side
+        expect(calculator.total).toEqual(jasmine.anything())
+        // null / undefined doesnt work with jasmine.anything
+        // expect(undefined).toEqual(jasmine.anything())
     })
 
 });
