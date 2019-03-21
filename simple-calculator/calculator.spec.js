@@ -129,6 +129,15 @@ describe("calculator.js", function(){
         expect(function(){calculator.divide(0)}).toThrowError(Error, "cannot divide by 0")
     })
 
+    it("returns total", ()=>{
+        const calculator = new Calculator();
+
+        calculator.total = 50;
+
+        expect(calculator.add(20)).toBe(70)
+        expect(calculator.total).toMatch(/-?\d+/)
+        expect(typeof(calculator.total)).toMatch("number")
+    })
 
 });
 
