@@ -143,7 +143,7 @@ describe("calculator.js", function(){
         expect(calculator.add(20)).toBe(70)
         expect(calculator.total).toMatch(/-?\d+/)
         expect(typeof(calculator.total)).toMatch("number")
-
+        expect(calculator.total).toBeNumber()
         // asymmetric matchers
         // not equal in each side
         expect(calculator.total).toEqual(jasmine.anything())
