@@ -84,6 +84,8 @@ describe("calculator.js", function(){
         expect(calculator).toBeTruthy();
         expect(calculator2).toBeTruthy();
         expect(calculator).toEqual(calculator2)
+
+        expect(calculator.constructor.name).toContain("Calc");
     })
 
     it("instantiates unique object", function(){
@@ -102,6 +104,21 @@ describe("calculator.js", function(){
         expect(calculator.multiply).not.toBeUndefined();
     })
 
+    it("can overwrite total", function(){
+        const calculator = new Calculator();
+
+        calculator.total = null;
+        expect(calculator.total).toBeNull();
+    })
+
+    it("dont not handle NaN", ()=>{
+        const calculator = new Calculator();
+        calculator.total = 20;
+        calculator.multiply("a")
+
+        expect(calculator.total).toBeNaN()
+    })
+
 });
 
 // deep equality comparison :
@@ -109,3 +126,6 @@ describe("calculator.js", function(){
 
 // truthy value is a value that evaluates to true in a boolean context
 // falsy value is a value that evaluates to false in a boolean context
+
+
+// toContain checks to see if an array has something or a string has that specfic substring
