@@ -76,4 +76,15 @@ describe("calculator.js", function(){
         const calculator = new Calculator();
         expect(calculator.total).toBe(0)
     })
+
+    it("has constructor", function(){
+        const calculator = new Calculator();
+        const calculator2 = new Calculator();
+
+        expect(calculator).toEqual(calculator2)
+    })
+
 });
+
+// deep equality comparison :
+// toEqual = comparing two objects and making sure they have equal keys and values
