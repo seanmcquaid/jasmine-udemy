@@ -38,22 +38,27 @@
 
 describe("calculator.js", function(){
     describe("Calculator", function(){
+        let calculator;
+        let calculator2;
+        beforeEach(function(){
+            // anything here executes before each spec
+            calculator = new Calculator();
+            calculator2 = new Calculator();
+        });
+        afterEach(function(){
+
+        });
         it("should initialize the total", function(){
-            const calculator = new Calculator();
             expect(calculator.total).toBe(0)
             expect(calculator.total).toBeFalsy();
         })
         it("can overwrite total", function(){
-            const calculator = new Calculator();
-    
             calculator.total = null;
             expect(calculator.total).toBeNull();
         })
         it("can be instantiated", function(){
             // jasmine.addmatchers adds object of matchers
             jasmine.addMatchers(customMatchers);
-            const calculator = new Calculator();
-            const calculator2 = new Calculator();
     
             expect(calculator).toBeCalculator();
             // need messages for both pass and fail
@@ -66,14 +71,11 @@ describe("calculator.js", function(){
         })
     
         it("instantiates unique object", function(){
-            const calculator = new Calculator();
-            const calculator2 = new Calculator();
             // can use not to make a negative assertion
             expect(calculator).not.toBe(calculator2);
         })
     
         it("has common operations", function(){
-            const calculator = new Calculator();
     
             expect(calculator.add).toBeDefined();
             expect(calculator.subtract).not.toBeUndefined();
@@ -82,7 +84,6 @@ describe("calculator.js", function(){
         })
         describe("add()", function(){
             it("should add numbers from total", function(){
-                const calculator = new Calculator();
                 calculator.add(5);
                 // expect total to be 5
                 // put actual value in expect
@@ -90,8 +91,6 @@ describe("calculator.js", function(){
                 expect(calculator.total).toBe(5);
             })
             it("returns total", ()=>{
-                const calculator = new Calculator();
-        
                 calculator.total = 50;
         
                 expect(calculator.add(20)).toBe(70)
@@ -108,7 +107,6 @@ describe("calculator.js", function(){
 
         describe("subtract()", function(){
             it("should subtract numbers from total", function(){
-                const calculator = new Calculator();
                 calculator.total = 30;
                 calculator.subtract(5);
                 expect(calculator.total).toBe(25);
@@ -117,13 +115,11 @@ describe("calculator.js", function(){
 
         describe("multiply()", function(){
             it("should multiply total by number", function(){
-                const calculator = new Calculator();
                 calculator.total = 100;
                 calculator.multiply(2);
                 expect(calculator.total).toBe(200);
             })
             it("dont not handle NaN", ()=>{
-                const calculator = new Calculator();
                 calculator.total = 20;
                 calculator.multiply("a")
         
@@ -133,13 +129,11 @@ describe("calculator.js", function(){
 
         describe("divide()", function(){
             it("should divide total by number", function(){
-                const calculator = new Calculator();
                 calculator.total = 200;
                 calculator.divide(2);
                 expect(calculator.total).toBe(100);
             })
             it("handles divide by zero", ()=>{
-                const calculator = new Calculator();
                 // need to use a function to return the thing that will throw something
                 // if you just pass in calc.divide(0), it will return as a fail
                 expect(function(){calculator.divide(0)}).toThrow()
