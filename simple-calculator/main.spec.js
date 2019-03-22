@@ -8,22 +8,21 @@ describe("main.js", function(){
         xit("validates operation");
         xit("calls updateResult");
     });
-    describe("updateResult()", ()=>{
-        let element;
-        beforeAll( ()=>{
+    describe("updateResult()", function(){
+        beforeAll(function(){
             // executed once before all the specs are executed
-            element = document.createElement("div");
+            const element = document.createElement("div");
             element.setAttribute("id", "result");
             document.body.appendChild(element);
-            // this.element = element;
+            this.element = element;
         })
-        afterAll(()=>{
-            document.body.removeChild(element);
+        afterAll(function(){
+            document.body.removeChild(this.element);
         });
 
-        it("adds result to DOM element", ()=>{
+        it("adds result to DOM element", function(){
             updateResult("5");
-            expect(element.innerText).toBe("5");
+            expect(this.element.innerText).toBe("5");
         })
     });
 })
