@@ -46,7 +46,8 @@ describe("calculator.js", function(){
             calculator2 = new Calculator();
         });
         afterEach(function(){
-
+            // anything inside this block executes after each spec
+            // inside this describe
         });
         it("should initialize the total", function(){
             expect(calculator.total).toBe(0)
