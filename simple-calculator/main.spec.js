@@ -69,8 +69,14 @@ describe("main.js", function(){
             expect(spy).not.toHaveBeenCalledWith(3)
             expect(spy).toHaveBeenCalledWith(2)
         });
-        xit("validates operation");
-        xit("calls updateResult");
+        it("calls updateResult (example using and.callThrough)", function(){
+            spyOn(window, "updateResult");
+            spyOn(Calculator.prototype, "multiply").and.callThrough()
+            // call through calls the real instance of multiply
+            calculate("5*5");
+            expect(window.updateResult).toHaveBeenCalled();
+            expect(window.updateResult).toHaveBeenCalledWith(25);
+        });
     });
     describe("updateResult()", function(){
         beforeAll(function(){
