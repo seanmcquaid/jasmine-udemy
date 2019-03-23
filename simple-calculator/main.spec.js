@@ -1,6 +1,29 @@
 describe("main.js", function(){
     describe("calculate()", function(){
-        xit("validates expression");
+        it("validates expression when the first number is invalid", function(){
+            spyOn(window, "updateResult").and.stub();
+
+            calculate("a+3");
+            // our spy was installed on window.updateResult so we have to expect that
+            // checking to see if this has been called at least once when calculate has been executed
+            expect(window.updateResult).toHaveBeenCalled()
+        });
+        it("validates expression when the second number is invalid", function(){
+            spyOn(window, "updateResult").and.stub();
+
+            calculate("3+a");
+            // our spy was installed on window.updateResult so we have to expect that
+            // checking to see if this has been called at least once when calculate has been executed
+            expect(window.updateResult).toHaveBeenCalled()
+        });
+        it("validates expression when operation is invalid", function(){
+            spyOn(window, "updateResult").and.stub();
+
+            calculate("3_4");
+            // our spy was installed on window.updateResult so we have to expect that
+            // checking to see if this has been called at least once when calculate has been executed
+            expect(window.updateResult).toHaveBeenCalled()
+        });
         xit("calls add");
         xit("calls subtract");
         xit("calls multiply");
