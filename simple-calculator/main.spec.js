@@ -87,6 +87,24 @@ describe("main.js", function(){
             expect(window.updateResult).toHaveBeenCalled();
             expect(window.updateResult).toHaveBeenCalledWith("it works");
         });
+
+        it("calls updateResult (example using and.returnValue)", function(){
+            spyOn(window, "updateResult");
+            spyOn(Calculator.prototype, "multiply").and.returnValue("whatever multiply returns");
+            
+            calculate("5*5");
+            expect(window.updateResult).toHaveBeenCalled();
+            expect(window.updateResult).toHaveBeenCalledWith("whatever multiply returns");
+        });
+
+        it("calls updateResult (example using and.returnValues)", function(){
+            spyOn(window, "updateResult");
+            spyOn(Calculator.prototype, "add").and.returnValues(null, "whatever add returns");
+            
+            calculate("5+5");
+            expect(window.updateResult).toHaveBeenCalled();
+            expect(window.updateResult).toHaveBeenCalledWith("whatever add returns");
+        });
     });
     describe("updateResult()", function(){
         beforeAll(function(){
