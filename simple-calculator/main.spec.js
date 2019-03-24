@@ -105,7 +105,7 @@ describe("main.js", function(){
             expect(window.updateResult).toHaveBeenCalled();
             expect(window.updateResult).toHaveBeenCalledWith("whatever add returns");
         });
-        
+
         it("does not handle errors", function(){
             spyOn(Calculator.prototype, "multiply").and.throwError("some error");
             expect(function(){calculate("5*5")}).toThrowError("some error");
@@ -128,4 +128,14 @@ describe("main.js", function(){
             expect(this.element.innerText).toBe("5");
         })
     });
+    describe("showVersion()", function(){
+        it("calls calculator.version", function(){
+            spyOn(document, "getElementById").and.returnValue({
+                innerText : null
+            });
+            spyOnProperty(Calculator.prototype, "version", "get")
+            showVersion();
+            expect(Object.getOwnPropertyDescriptor(Calculator.prototype, "version").get).toHaveBeenCalled()
+        })
+    })
 })
