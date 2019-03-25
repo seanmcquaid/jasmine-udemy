@@ -49,4 +49,7 @@ function showVersion(){
     .then(function(version){
         element.innerText = version;
     })
+    .catch(function(error){
+        element.innerText = "unknown";
+    })
 }
