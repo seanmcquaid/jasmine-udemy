@@ -143,10 +143,16 @@ describe("calculator.js", function(){
                 expect(function(){calculator.divide(0)}).toThrowError(Error, "cannot divide by 0")
             })
         })
-        // put specs here
-    // it("title of the spec", function(){
-    //     // todo : EXPECTATIONS
-    // })
+
+        describe("get version", function(){
+            it("fetches version from external source", function(done){
+                calculator.version.then(function(version){
+                    expect(version).toBe("0.1");
+
+                    done();
+                })
+            })
+        })
 
     });
 });
